@@ -48,4 +48,14 @@ router.get('/fetch/', function (req, res, next) {
 res.json("Done")
 });
 
+/* POST to mongo DB. */
+router.post('/write', function (req, res) {
+    News.create({
+        news_content: req.body.news_content,
+        rating: req.body.rating
+    }).then(news =>{ 
+        res.json(news)
+    });
+});
+
 module.exports = router;
